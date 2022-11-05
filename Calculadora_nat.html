@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nathanael - Calculadora</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      body{
+          background-color: #50b441;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="container">
+      <h1>Te ayudo a hacer operaciones</h1>
+
+      <div class="col-3">
+        <div class="mt-1">
+          <input type="text" id="resultado">
+        </div>
+
+        <div class="mt-1">
+          <button class="btn btn-success" onclick="jboton(7)">7</button>
+          <button class="btn btn-primary" onclick="jboton(8)">8</button>
+          <button class="btn btn-danger" onclick="jboton(9)">9</button>
+          <button class="btn btn-danger" onclick="jdivision()">/</button>
+        </div>
+
+        <div class="mt-1">
+          <button class="btn btn-warning" onclick="jboton(4)">4</button>
+          <button class="btn btn-dark" onclick="jboton(5)">5</button>
+          <button class="btn btn-info" onclick="jboton(6)">6</button>
+          <button class="btn btn-danger" onclick="jmultiplicacion()">*</button>
+        </div>
+
+        <div class="mt-1">
+          <button class="btn btn-secondary" onclick="jboton(1)">1</button>
+          <button class="btn btn-outline-success" onclick="jboton(2)">2</button>
+          <button class="btn btn-outline-dark" onclick="jboton(3)">3</button>
+          <button class="btn btn-danger" onclick="jresta()">-</button>
+        </div>
+
+        <div class="mt-1">
+          <button class="btn btn-outline-info" onclick="jboton(0)">0</button>
+          <button class="btn btn-warning" onclick="jsuma()">+</button>
+          <button class="btn btn-info" onclick="jborra()">C</button>
+          <button class="btn btn-outline-primary" onclick="jigual()">=</button>
+          <button class="btn btn-outline-success" onclick="jtangente()">Tan</button>
+        </div>
+
+        <div class="mt-1">
+          <button class="btn btn-outline-info" onclick="jpotencia()">^</button>
+          <button class="btn btn-outline-warninng" onclick="jraiz()">√</button>
+          <button class="btn btn-outline-primary" onclick="jcoseno()">Cos</button>
+           <button class="btn btn-outline-primary" onclick="jusuario()">saludo :)</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+
+    <script>
+      $("#resultado").val("Hola, comencemos :)");
+
+      var num = "";
+      var val1 = "";
+      var oper = 0;
+      raizC=parseInt(1);
+
+      function jigual(){
+        if(oper == 1){
+          tmp = parseInt (val1) + parseInt(num);
+          $("#resultado").val( tmp );
+          num = tmp;
+        }
+        if(oper == 2){
+          tmp = parseInt (val1) - parseInt(num);
+          $("#resultado").val(tmp);
+          num = tmp;
+        }
+        if(oper == 3){
+          tmp = parseInt (val1) * parseInt(num);
+          $("#resultado").val(tmp);
+          num = tmp;
+        }
+        if(oper == 4){
+          tmp = parseInt (val1) / parseInt(num);
+          $("#resultado").val(tmp);
+          num = tmp;
+        }
+        if(oper == 5){
+          tmp = val1;
+          while (num > 1){
+              tmp = parseInt (tmp) * parseInt (val1);
+              num = parseInt (num) - 1;
+          }
+          $("#resultado").val(tmp);
+          num = tmp;  
+        }
+        oper = 0;
+      }
+
+      function jsuma(){
+        val1 = num;
+        oper = 1;
+        jborra();
+      }
+
+      function jresta(){
+        val1 = num;
+        oper = 2;
+        jborra();
+      }
+
+      function jmultiplicacion(){
+        val1 = num;
+        oper = 3;
+        jborra();
+      }
+
+      function jdivision(){
+        val1 = num;
+        oper = 4;
+        jborra();
+      }
+      function jpotencia(){
+        val1 = num;
+        oper = 5;
+        jborra();
+      }
+
+      function jraiz(){
+        val1 = num;
+        tmp = Math.sqrt(num);
+        $("#resultado").val(tmp);
+        num = tmp;
+      }
+
+      function jcoseno(){
+        val1 = num;
+        tmp = Math.cos(num);
+        $("#resultado").val(tmp);
+        num = tmp;
+      }
+
+      function jtangente(){
+        val1 = num;
+        tmp = Math.atan(num);
+        $("#resultado").val(tmp);
+        num = tmp;
+      }
+
+      function jusuario(){
+        val1 = num;
+        tmp = "Nathanael :)"
+        $("#resultado").val(tmp);
+        num = tmp;
+      }
+
+      function jboton(valor){
+        //alert( valor );
+        num = num + valor;
+        $("#resultado").val( num );
+      }
+
+      function jborra (){
+        $("#resultado").val("");
+        num ="";
+      }
+    </script>
+
+  </body>
+</html>
